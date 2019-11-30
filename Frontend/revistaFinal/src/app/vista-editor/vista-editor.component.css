@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+.contenedor{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url(/src/assets/img/fondo.png);
+    background-attachment: fixed;
+}
+
+.navbr{
+    position: relative;
+    max-width: 1200px;
+    margin:20px auto;
+    padding: 10px;
+    background: #6982ff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.logo{
+    color: #069370;
+    height: 120px;
+    font-size: 36px;
+    line-height: 60px;
+    padding: 0 20px;
+    text-align: center;
+    box-sizing: border-box;
+    float: left;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+nav{
+    float: right;
+}
+
+.clearfix{
+    clear: both;
+}
+
+nav ul{
+    margin: 0;
+    padding: 30px 0;
+    display: flex;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a{
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #262626;
+    font-weight: 700;
+}
+
+nav ul li a.active,
+nav ul li a:hover{
+    background: #f8fca4;
+    color: fff;
+    transition: 0.5s;
+}
+
+@media (max-width:1200px)
+{
+    .navbr{
+        margin: 20px;
+    }
+}
+
+@media (max-width:768px)
+{
+    .menu-toggle{
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin: 10px;
+        background: #f8fca4;
+        float: right;
+        cursor: pointer;
+        text-align: center;
+        font-size: 30px;
+        color: black;
+    }
+    .menu-toggle:before{
+        content: '\f0c9';
+        font-family: fontAwesome;
+        line-height: 40px;
+    }
+    .menu-toggle.active:before{
+        content: '\f00d';
+        font-family: fontAwesome;
+        line-height: 40px;
+    }
+    nav{
+        display: none;
+    }
+    nav.active{
+        display: block;
+        width: 100%;
+    }
+
+    nav.active ul{
+        display: block;
+    }
+
+    nav.active ul li{
+        margin: 0;
+    }
+}
+
+.seccion{
+    height: 100%;
+    width: 70%;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, .2);
+}
+
+.pie{
+    height: 10vh;
+    width: 100vw;
+}
+
+.footer-container{
+    width: 100%;
+}
+
+.footer-main{
+    width: 98%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px  0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.footer-main .footer-columna{
+    width: calc(100%/3);
+}
+
+.footer-main .footer-columna:nth-child(2){
+    padding: 0 20px;
+}
+
+.footer-main .footer-columna h1{
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.footer-main .footer-columna span p{
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    font-family: Raleway;
+    color: #fff;
+}
+
+.footer-main .footer-columna .footer-redes{
+    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-main .footer-columna p{
+    color: #fff;
+}
+
+.footer-main .footer-columna .footer-redes a{
+    display: inline-block;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+}
+
+@media screen and   (max-width: 750px){
+    .footer-main .footer-columna{
+        padding: 0 10 px;
+    }
+
+    .footer-main .footer-columna h1{
+        font-size: 28px;
+    }
+
+    .footer-main .footer-columna p{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .footer-main{
+        padding: 10px 0 ;
+    }
+
+    .footer-main .footer-columna{
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .footer-main .footer-columna h1{
+        margin-bottom: 5px;
+    }
+
+    .footer-main .footer-columna span{
+        display: block;
+    }
+
+    .footer-main .footer-columna .footer-redes{
+        text-align: center;
+        margin-bottom: 20px;
+        margin: auto;
+    }
+}

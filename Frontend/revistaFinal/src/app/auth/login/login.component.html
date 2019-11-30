@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="contenedor">
+            <header class="navbr">
+                <a href="#" class="logo"><img src="../../assets/img/logouam.png" style="height:100px; width:200px" /></a>
+                <div class="menu-toggle" (click)="toggle()" id="hey"></div>
+                <nav id="hey1">
+                    <ul>
+                        <li><a href="#" class="active">Inicio</a></li>
+                        <li><a href="auth/login">Iniciar Sesion</a></li>
+                        <li><a href="auth/register">Registro</a></li>
+                    </ul>
+                </nav>
+                <div class="clearfix"></div>
+            </header>
+    </div>
+    
+    <section class="seccion">
+        <div class="form-login  mt-5">
+            <a class="volver" href="#"> ◄ Volver</a>
+            <h1 style="font-size: large ">INICIA SESION</h1>
+            <h2 style="font-size: medium">Puedes iniciar sesion con tu cuenta de REVISTA UAM para <br>publicar tus articulos</h2>
+            <div class="Contenedor-inputs">
+                    <form #frmLogin="ngForm" class="login-container" (ngSubmit)="onLogin(frmLogin)">
+                            <input type="email" name="email" id="email" placeholder="Example@alguien.com" class="input-100 form-control" ngModel required >
+                            <input type="password" name="password" id="password" placeholder="Contraseña" class="input-100 form-control" ngModel required>                    
+                            <button value="Send" id="enviar" class="btn rounded-pill Iniciar" style="background-color: yellow;"required>INICIA SESIÓN</button>
+                        </form>
+            </div>
+        </div>
+
+        <div class="crear-Cuenta mt-3">
+            <h1 style="font-size: large" class="text-center">¿NO TIENES UNA CUENTA?</h1>
+            <h2 style="font-size: medium">Crea una cuenta para poder acceder a<br>los servicios de REVISTA UAM</h2>
+            <a class="Contenedor-inputs" href="auth/register">
+                <button type="button" class="btn rounded-pill Iniciar  text-muted" >CREA UNA CUENTA</button>
+            </a>
+        </div>
+
+    </section>
+
+    <footer class="pie">
+        <div class="navbr">
+            <div class="footer-container">
+                <div class="footer-main">
+                    <div class="footer-columna">
+                        <h1>Redes Sociales</h1>
+                        <div class="footer-redes">
+                            <span><a href="" class="fa fa-facebook"><p>Facebook</p></a></span><br>
+                            <span><a href="" class="fa fa-twitter"><p>Twitter</p></a></span><br>
+                            <span><a href="" class="fa fa-instagram"><p>Instagram</p></a></span>
+                        </div>
+                    </div>
+                    <div class="footer-columna">
+                        <h1>Visitanos</h1>
+                        <span class="fa fa-map-marker"><p>Universidad Autonoma, Manizales, Caldas</p></span>
+                        <span class="fa fa-phone"><p>(+57) 321 1668452</p></span><br>
+                        <span class="fa fa-envelope"><p>revistaUAM@autonoma.edu.co</p></span>
+                    </div>
+                    <div class="footer-columna">
+                        <h1>Sobre Nosotros</h1>
+                        <p>Revista de divulgacion de articulos para los estudiantes de la Universidad Autonoma de Manizales</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>
