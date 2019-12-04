@@ -32,29 +32,76 @@
             <a class="volver" href="#"> ◄ Volver</a>
             <h2 style="font-size:large" class="text-center"> CREA TU CUENTA</h2><br>
             <h6 class=form-subtitulo style="font-size: medium;">Crea una cuenta de REVISTA UAM para acceder a<br> nuestros servivios</h6><br><br>
-                    
-            <div class="container" >
-                <div class="login">
-                  <div class="login-triangle"></div>
-              
-                  <h2 class="login-header">Create an account</h2>
-              
-                  <form #frmRegister="ngForm" class="login-container" (ngSubmit)="onRegister(frmRegister)">
-                    <p>
-                      <input type="text" name="name" placeholder="name" ngModel required>
-                    </p>
-                    <p>
-                      <input type="email" name="email" placeholder="Email" ngModel required>
-                    </p>
-                    <p>
-                      <input type="password" name="password" placeholder="Password" ngModel required>
-                    </p>
-                    <p>
-                      <input type="submit" value="Register" class="btn rounded-pill Iniciar" style="background-color: yellow;">
-                    </p>
-                  </form>
+                             
+    <div class="contenedor-inputs" >
+        <form #frmRegister="ngForm" class="login-container" (ngSubmit)="onRegister(frmRegister)">
+        <div class="form-row">
+            <!--Nombre-->
+            <div class="form-group col-md-6">
+                <input type="text" class="input-100 form-control" ngModel required  id="name" name="name" placeholder="Nombre"  onpaste="return false">
+            </div>
+            <!--Apellido-->
+            <div class="form-group col-md-6">
+                <input type="text" class="input-100 form-control" ngModel required  id="apellido" name="apellido" placeholder="Apellido"  onpaste="return false">
+            </div>
+            <!--Email-->
+            <div class="form-group col-md-6">
+                <input type="email" class="input-100 form-control" ngModel required  id="email" name="email" placeholder="Email" required>
+            </div>
+            <!--Cedula-->
+            <div class="form-group col-md-6"> 
+                <input type="text" class="input-100 form-control" ngModel required  id="cedula" name="cedula" placeholder="Cedula"  onpaste="return false">
+            </div>
+            <!--Contraseña-->
+            <div class="form-group col-md-6">
+                <input type="password" class="input-100 form-control" ngModel required  id="password" name="password" placeholder="Contraseña" onpaste="return false">
+            </div>
+            <!--Repetir contraseña
+            <div class="form-group col-md-6">
+                <input type="password" class="input-100 form-control" ngModel required  id="Repetir-password" name="password" placeholder="Repetir Contraseña" onpaste="return false">
+            </div>-->
+            
+            <div class="form-group col-md-6">
+                <input type="text" class="input-100 form-control" ngModel required  id="direccion" name="direccion" placeholder="Direccion">
+             </div>
+            <!--Genero-->
+            <div class="form-group col-md-6">
+                <label for="genero">Genero:</label><br>
+        
+                <div class="form-check form-check-inline mt-2">
+                    <input class="form-check-input" ngModel required type="radio" name="genero" value="masculino" id="masculino">
+                    <label class="form-check-label" style="font-size:small" for="masculino">Masculino</label>
                 </div>
-              </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" ngModel required type="radio" name="genero"  value="femenino" id="femenino">
+                    <label class="form-check-label" style="font-size:small" for="femenino">Femenino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" ngModel required type="radio" name="genero"  value="NoBinario" id="NoBinario">
+                    <label class="form-check-label" style="font-size:small" for="NoBinario">No binario</label>
+                </div>
+            </div>
+           
+            <!--Tipo de cuenta-->
+            <div class="form-group col-md-9">
+                <label for="genero">Cuenta tipo:</label><br>
+        
+                <div class="form-check form-check-inline mt-2">
+                    <input class="form-check-input" ngModel required type="radio" name="tipo" id="autor" value="autor">
+                    <label class="form-check-label" style="font-size:small" for="autor">Autor</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" ngModel required type="radio" name="tipo" id="par"  value="par">
+                    <label class="form-check-label" style="font-size:small" for="par">Par evaluador</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input type="submit" value="Registrase" class="btn rounded-pill Iniciar" style="background-color: yellow;" required>
+            </div>
+        </div>    
+    </form>
+    </div>
+
         </div>
         <div class="crear-Cuenta mt-3">
             <h1 style="font-size: large" class="text-center">¿YA TIENES UNA CUENTA?</h1>

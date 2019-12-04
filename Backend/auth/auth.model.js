@@ -7,6 +7,11 @@ const userShema= new Schema ({
         required: true,
         trim: true
     },
+    apellido: {
+        type: String,
+        required: true,
+        trim: true
+    },
     email: {
         type: String,
         required: true,
@@ -14,6 +19,26 @@ const userShema= new Schema ({
         unique: true
     },
     password: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    cedula: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    genero: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    direccion: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    tipo: {
         type: String,
         required: true,
         trim: true

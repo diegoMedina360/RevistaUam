@@ -6,8 +6,14 @@ exports.createUser = (req,res,next)=> {
     //console.log("CCCCCCCCCC",req.body);
     const newUser={
         name: req.body.name,
+        apellido: req.body.apellido,
         email:req.body.email,
-        password: bcrypt.hashSync(req.body.password)
+        password: bcrypt.hashSync(req.body.password),
+        cedula:req.body.cedula,
+        genero:req.body.genero,
+        direccion:req.body.direccion,
+        tipo: req.body.tipo
+
     }
 
     User.create (newUser,(err,user)=>{
