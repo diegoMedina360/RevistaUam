@@ -1,0 +1,24 @@
+
+  
+  .Basicos
+  {
+    background-color:gainsboro;
+   border: black;
+  }
+  
+  .Basicos2
+  {
+    background-color: cadetblue;
+   border: black;
+  }
+  
+  .boton{
+     background-color:yellowgreen;
+     border: black;
+     caret-color:cornsilk;
+  
+  }
+  .espacios{
+    border: 2px;
+
+  }

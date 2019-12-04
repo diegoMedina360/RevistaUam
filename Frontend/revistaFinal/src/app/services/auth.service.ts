@@ -17,9 +17,17 @@ export class AuthService {
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/register`,
     user).pipe(tap(
       (res: JwtResponseI)=>{
-        if(res){
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+        if(res.error){
+          if(res.error.mensaje=="Email ya existe"){
+            alert("Registro InCorrecto: Email ya existe");
+        }  
+        }else{
+          if(res.dataUser){
+            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            alert("Registro Correcto");
+          }
         }
+        
       }
     )
     );
@@ -29,8 +37,18 @@ export class AuthService {
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/login`,
     user).pipe(tap(
       (res: JwtResponseI)=>{
-        if(res){
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+        //alert(res.error.mensaje);
+        if(res.error){
+          if(res.error.mensaje=="Datos incorrectos"){
+            alert("Datos Incorrectos");
+            alert(res.error.mensaje);
+        }
+        }else{
+          
+          if(res.dataUser){
+            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            alert("Login Correcto");
+          }
         }
       }
     )

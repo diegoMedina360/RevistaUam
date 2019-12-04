@@ -11,7 +11,12 @@ exports.createUser = (req,res,next)=> {
     }
 
     User.create (newUser,(err,user)=>{
-        if(err) return res.status(500).send('Server error');
+        if(err){
+            const error={
+                mensaje:"Email ya existe"
+            }
+            return res.send({error});
+        } 
         const expiresIn=24*60*60;
         const accessToken = jwt.sign({id:user.id},
             SECRET_KEY,{expiresIn:expiresIn
@@ -26,28 +31,41 @@ exports.createUser = (req,res,next)=> {
     });
 }
 
-exports.loginUser =(req,res,next)=>{
-    const userData ={
-        email: req.body.email,
-        password: req.body.password
+exports.loginUser = (req, res, next) => {
+    const userData = {
+      email: req.body.email,
+      password: req.body.password
     }
-    User.findOne({email: userData.email},(err,user)=>{
-        if(err) return res.status(500).send('server error!');
-        if(!user){
-            //email no existe
-            res.status(409).send({message:'Something is wrong'});
+   
+    User.findOne({ email: userData.email }, (err, user) => {
+        const error={
+            mensaje:"Datos incorrectos"
         }
-        else{
-            const resultPasssword= userData.password;
-            if(resultPasssword){
-                const expiresIn=24*60*60;
-                const accessToken= jwt.sign({id: user.id},SECRET_KEY,{expiresIn: expiresIn});
-                res.send({userData});
-            }
-            else{
-                //contrasena incorrecta
-                res.status(409).send({message:'Something is wrong'});
-            }
+      if (err) return res.send({error});
+  
+      if (!user) {
+        // email does not exist
+        //res.status(409).send({ message: 'Something is wrong' });
+        res.send({error});
+      } else {
+        const resultPassword = bcrypt.compareSync(userData.password, user.password);
+        if (resultPassword) {
+          const expiresIn = 24 * 60 * 60;
+          const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
+  
+          const dataUser = {
+            name: user.name,
+            email: user.email,
+            accessToken: accessToken,
+            expiresIn: expiresIn
+          }          
+          res.send({ dataUser });
+        } else {
+          // password wrong
+          //res.status(409).send({ message: 'Something is wrong' });
+          res.send({error});
         }
-    })
-}
+      }
+    });
+  }
+

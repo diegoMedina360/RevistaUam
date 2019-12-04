@@ -6,5 +6,8 @@ export interface JwtResponseI {
         accessToken: string,
         expiresIn:string
     }
+    error:{
+        mensaje:string;
+    }
 
 }
