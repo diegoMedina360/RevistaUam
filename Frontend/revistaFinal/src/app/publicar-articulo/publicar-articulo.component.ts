@@ -12,15 +12,25 @@ export class PublicarArticuloComponent implements OnInit {
  
   uploadedFiles: Array < File > ;
   constructor(private authService: AuthService, private router: Router) { }
-
+  
   ngOnInit() {
   }
-  subido: boolean=false;
+  validarSeccion(){
+    if(this.authService.getToken()==null){
+      alert("Debe estar Logiado para subir articulos");
+      this.router.navigateByUrl('auth/login');
+    
+     }else{
+       return false;
+     }
+
+  }
+  private subido: boolean=false;
   private ruta=null;
   fileChange(element) {
     this.uploadedFiles = element.target.files;
   }
-  
+  //Cragar el archivo primero
   upload() {
     let formData = new FormData();
     for (var i = 0; i < this.uploadedFiles.length; i++) {
@@ -32,28 +42,35 @@ export class PublicarArticuloComponent implements OnInit {
       this.ruta=res;
     });
     }
+
   createArt(form): void {
- 
-    console.log('Archivo',form.value);
+ console.log(this.authService.getToken());
+ if(this.authService.getToken()==null){
+  alert("Debe estar Logiado para subir articulos");
+  this.router.navigateByUrl('auth/login');
+
+ }
+ else{
+  if(this.subido==true){
+    //console.log('Archivo',form.value);
     var dataEnviar={
       titulo:form.controls['titulo'].value,
       descripcion:form.controls['titulo'].value,
       url:""+this.ruta.message,
       autor:this.authService.getToken()
     }
-    form=form.value+dataEnviar;
-    console.log('Archivo',dataEnviar);
-    if(this.subido==true){
-  
+    //console.log('Archivo',dataEnviar);
+    this.authService.subirArticulo(dataEnviar).subscribe(res => {
+      this.router.navigateByUrl('VistaAutor');
+    });
     
-      this.authService.subirArticulo(dataEnviar).subscribe(res => {
-        this.router.navigateByUrl('VistaAutor');
-      });
-      this.subido=false;
-    }
-    else{
-      alert("Suba Primero el Archivo!");
-    }
+  }
+  else{
+    alert("Suba Primero el Archivo!");
+  }
+
+ }
+    
     
     
   }
