@@ -38,20 +38,22 @@ export class PublicarArticuloComponent implements OnInit {
     var dataEnviar={
       titulo:form.controls['titulo'].value,
       descripcion:form.controls['titulo'].value,
-      url:this.ruta
+      url:""+this.ruta.message,
+      autor:this.authService.getToken()
     }
+    form=form.value+dataEnviar;
     console.log('Archivo',dataEnviar);
-    /*if(this.subido==true){
+    if(this.subido==true){
   
     
-      this.authService.subirArticulo(form.value).subscribe(res => {
+      this.authService.subirArticulo(dataEnviar).subscribe(res => {
         this.router.navigateByUrl('VistaAutor');
       });
       this.subido=false;
     }
     else{
       alert("Suba Primero el Archivo!");
-    }*/
+    }
     
     
   }

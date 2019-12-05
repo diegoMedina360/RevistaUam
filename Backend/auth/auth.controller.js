@@ -77,26 +77,26 @@ exports.loginUser = (req, res, next) => {
     });
   }
 
-  exports.createArt = (req,url,res,next)=> {
+  exports.createArt = (req,res,next)=> {
     console.log("CCCCCCCCCC",req.body);
     //const source = fs.createReadStream(req.body.archivoAdjunto);
     //const destination = fs.createWriteStream("assets/pdf/articulo2.pdf");
-    fs.rename(req.body.archivoAdjunto, '/tmp/tortadechocolate.pdf', (err) => {
+    /*fs.rename(req.body.archivoAdjunto, '/tmp/tortadechocolate.pdf', (err) => {
       if (err) throw err;
       console.log('Nombre Editado Satisfactoriamente');
     });
     fs.appendFile('tortasdechocolate.xls', 'tortas', (err) => {
       if (err) throw err;
       console.log('Archivo Creado Satisfactoriamente');
-    });
+    });*/
     const newArt={
         titulo:req.body.titulo,
         descripcion: req.body.descripcion,
-        autor:"Autor",
+        autor:req.body.autor,
         par: "Sin Asignar",
         revisado:false,
         publicado:false,
-        url:url
+        url:req.body.url
     }
 
     Articulo.create (newArt,(err,user)=>{

@@ -66,14 +66,14 @@ export class AuthService {
     localStorage.setItem("EXPIRE_IN",expiresIn);
     this.token= token;
   }
-  private getToken():string{
+   getToken():string{
     if(!this.token){
       this.token =localStorage.getItem("ACCESS_TOKEN");
     }
     return this.token;
   }
 
-  subirArticulo(articulo:ArticuloI): Observable<JwtResponseI>{
+  subirArticulo(articulo): Observable<JwtResponseI>{
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/createArticulo`,
     articulo).pipe(tap(
       (res: JwtResponseI)=>{
