@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     
     //console.log('register',form.value);
     this.authService.register(form.value).subscribe(res => {
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('VistaAutor');
     });
   }
 

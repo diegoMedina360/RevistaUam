@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { ArticuloI } from '../models/articulo';
 @Component({
   selector: 'app-publicar-articulo',
   templateUrl: './publicar-articulo.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicarArticuloComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  createArt(form): void {
+    //console.log('register',form.value);
+    this.authService.subirArticulo(form.value).subscribe(res => {
+      this.router.navigateByUrl('VistaAutor');
+    });
   }
 
   toggle(){

@@ -12,7 +12,9 @@ import { VistaAutorComponent } from './vista-autor/vista-autor.component';
 import { VistaEditorComponent } from './vista-editor/vista-editor.component';
 import { ListaAutoresParesComponent } from './lista-autores-pares/lista-autores-pares.component';
 import { AsignarParComponent } from './asignar-par/asignar-par.component';
-
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 const routes:Routes=[{path:'',component:PaginaPrincipalComponent},
                     { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
@@ -38,9 +40,12 @@ const routes:Routes=[{path:'',component:PaginaPrincipalComponent},
   ],
   imports: [RouterModule.forRoot(routes),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })

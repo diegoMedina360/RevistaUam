@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UserI} from '../models/user';
+import{ArticuloI} from '../models/articulo'
 import {JwtResponseI} from '../models/jwt-response';
 import {tap} from 'rxjs/operators';
 import {Observable,BehaviorSubject} from 'rxjs';
@@ -71,5 +72,24 @@ export class AuthService {
       this.token =localStorage.getItem("ACCESS_TOKEN");
     }
     return this.token;
+  }
+
+  subirArticulo(articulo:ArticuloI): Observable<JwtResponseI>{
+    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/createArticulo`,
+    articulo).pipe(tap(
+      (res: JwtResponseI)=>{
+        if(res.error){
+          if(res.error.mensaje=="Error Subir"){
+            alert("Error en subir Articulo!");
+        }  
+        }else{
+          if(res.exito){
+            alert("Articulo Enviado!");
+          }
+        }
+        
+      }
+    )
+    );
   }
 }

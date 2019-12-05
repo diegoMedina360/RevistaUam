@@ -1,4 +1,5 @@
 const User= require('./auth.dao');
+const Articulo=require('./auth.daoArticulo')
 const jwt = require('../node_modules/jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY='secretkey123456';
@@ -75,3 +76,28 @@ exports.loginUser = (req, res, next) => {
     });
   }
 
+  exports.createArt = (req,res,next)=> {
+    //console.log("CCCCCCCCCC",req.body);
+    const newArt={
+        descripcion: req.body.descripcion,
+        autor:req.body.autor,
+        par: req.body.par,
+        revisado:false,
+        publicado:false,
+        url:req.body.url
+    }
+
+    Articulo.create (newArt,(err,user)=>{
+        if(err){
+            const error={
+                mensaje:"Error Subir"
+            }
+            return res.send({error});
+        } 
+        
+        const exito={
+          mensaje:"Archivo Subido"
+      }
+            res.send({exito});
+    });
+}

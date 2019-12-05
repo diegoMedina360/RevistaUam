@@ -9,5 +9,8 @@ export interface JwtResponseI {
     error:{
         mensaje:string;
     }
+    exito:{
+        mensaje:string;
+    }
 
 }

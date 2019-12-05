@@ -26,7 +26,8 @@ const userShema= new Schema ({
     cedula: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
     genero: {
         type: String,
