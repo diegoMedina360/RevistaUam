@@ -16,7 +16,7 @@ export class PublicarArticuloComponent implements OnInit {
   ngOnInit() {
   }
   subido: boolean=false;
-  private ruta;
+  private ruta=null;
   fileChange(element) {
     this.uploadedFiles = element.target.files;
   }
@@ -33,15 +33,17 @@ export class PublicarArticuloComponent implements OnInit {
     });
     }
   createArt(form): void {
+ 
     console.log('Archivo',form.value);
-
+    var dataEnviar={
+      titulo:form.controls['titulo'].value,
+      descripcion:form.controls['titulo'].value,
+      url:this.ruta
+    }
+    console.log('Archivo',dataEnviar);
     /*if(this.subido==true){
   
-    /*var dataEnviar:ArticuloI={
-        titulo:" ds",
-        descripcion:" df",
-        url:this.ruta
-      }
+    
       this.authService.subirArticulo(form.value).subscribe(res => {
         this.router.navigateByUrl('VistaAutor');
       });

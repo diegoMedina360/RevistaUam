@@ -73,8 +73,8 @@ export class AuthService {
     return this.token;
   }
 
-  subirArticulo(articulo:ArticuloI,ruta): Observable<JwtResponseI>{
-    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/createArticulo`,ruta,
+  subirArticulo(articulo:ArticuloI): Observable<JwtResponseI>{
+    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/createArticulo`,
     articulo).pipe(tap(
       (res: JwtResponseI)=>{
         if(res.error){
