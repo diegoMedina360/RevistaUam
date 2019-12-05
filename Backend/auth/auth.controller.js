@@ -3,6 +3,7 @@ const Articulo=require('./auth.daoArticulo')
 const jwt = require('../node_modules/jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY='secretkey123456';
+const fs = require('fs');
 exports.createUser = (req,res,next)=> {
     //console.log("CCCCCCCCCC",req.body);
     const newUser={
@@ -76,19 +77,31 @@ exports.loginUser = (req, res, next) => {
     });
   }
 
-  exports.createArt = (req,res,next)=> {
-    //console.log("CCCCCCCCCC",req.body);
+  exports.createArt = (req,url,res,next)=> {
+    console.log("CCCCCCCCCC",req.body);
+    //const source = fs.createReadStream(req.body.archivoAdjunto);
+    //const destination = fs.createWriteStream("assets/pdf/articulo2.pdf");
+    fs.rename(req.body.archivoAdjunto, '/tmp/tortadechocolate.pdf', (err) => {
+      if (err) throw err;
+      console.log('Nombre Editado Satisfactoriamente');
+    });
+    fs.appendFile('tortasdechocolate.xls', 'tortas', (err) => {
+      if (err) throw err;
+      console.log('Archivo Creado Satisfactoriamente');
+    });
     const newArt={
+        titulo:req.body.titulo,
         descripcion: req.body.descripcion,
-        autor:req.body.autor,
-        par: req.body.par,
+        autor:"Autor",
+        par: "Sin Asignar",
         revisado:false,
         publicado:false,
-        url:req.body.url
+        url:url
     }
 
     Articulo.create (newArt,(err,user)=>{
         if(err){
+          console.log("ERROR",err);
             const error={
                 mensaje:"Error Subir"
             }

@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.set('useCreateIndex',true);
 const artiShema= new Schema ({
+    titulo: {
+        type: String,
+        required: true,
+        trim: true
+    },
     descripcion: {
         type: String,
         required: true,

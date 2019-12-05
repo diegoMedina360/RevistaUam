@@ -5,7 +5,6 @@ import{ArticuloI} from '../models/articulo'
 import {JwtResponseI} from '../models/jwt-response';
 import {tap} from 'rxjs/operators';
 import {Observable,BehaviorSubject} from 'rxjs';
-
   import { from } from 'rxjs';
 @Injectable()
 export class AuthService {
@@ -74,8 +73,8 @@ export class AuthService {
     return this.token;
   }
 
-  subirArticulo(articulo:ArticuloI): Observable<JwtResponseI>{
-    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/createArticulo`,
+  subirArticulo(articulo:ArticuloI,ruta): Observable<JwtResponseI>{
+    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/createArticulo`,ruta,
     articulo).pipe(tap(
       (res: JwtResponseI)=>{
         if(res.error){
@@ -91,5 +90,9 @@ export class AuthService {
       }
     )
     );
+  }
+
+  uploadFile(formData) {
+    return this.httpClient.post(`${this.AUTH_SERVER}/api/upload`, formData);
   }
 }

@@ -1,5 +1,6 @@
 export interface ArticuloI {
     id: number,
+    titulo:string,
     descripcion: string,
     autor:string,
     par: string,
