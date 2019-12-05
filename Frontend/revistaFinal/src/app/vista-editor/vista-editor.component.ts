@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-vista-editor',
   templateUrl: './vista-editor.component.html',
@@ -7,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VistaEditorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.validarSeccion();
+   }
+
+  validarSeccion(){
+    if(this.authService.getToken()==null){
+      alert("Debe estar Logiado primero");
+      this.router.navigateByUrl('auth/login');
+    
+     }else{
+       return false;
+     }
+  }
+  salir(){
+    alert("Se cerro seccion correctamente!");
+      this.authService.logout();
+      this.router.navigateByUrl('');
+  }
+
 
   ngOnInit() {
   }

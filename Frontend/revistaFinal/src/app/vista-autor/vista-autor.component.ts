@@ -10,7 +10,24 @@ import { UserI } from '../models/user';
 })
 export class VistaAutorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.validarSeccion();
+   }
+
+  validarSeccion(){
+    if(this.authService.getToken()==null){
+      alert("Debe estar Logiado primero!");
+      this.router.navigateByUrl('auth/login');
+    
+     }else{
+       return false;
+     }
+  }
+  salir(){
+    alert("Se cerro seccion correctamente!");
+      this.authService.logout();
+      this.router.navigateByUrl('');
+  }
 
   ngOnInit() {
   }

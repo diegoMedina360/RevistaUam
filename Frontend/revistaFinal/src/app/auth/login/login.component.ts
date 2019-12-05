@@ -10,8 +10,18 @@ import { UserI } from '../../models/user';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.validarSeccion();
+   }
 
+  private validarSeccion(){
+    if(this.authService.getToken()==null){
+      return false;
+     }else{
+      alert("Ya estas loguiado!");
+      this.router.navigateByUrl(''); 
+     }
+  }
   ngOnInit() {
   }
 

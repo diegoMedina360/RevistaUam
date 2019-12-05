@@ -10,8 +10,19 @@ import { UserI } from '../../models/user';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.validarSeccion();
+   }
 
+  validarSeccion(){
+    if(this.authService.getToken()==null){
+      return false;}
+    else{
+      alert("Necesitas Cerrar seccion!"); 
+      this.router.navigateByUrl(''); 
+     }
+  }
+  
   ngOnInit() {
   }
 

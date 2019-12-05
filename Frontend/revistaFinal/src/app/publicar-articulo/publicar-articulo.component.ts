@@ -15,16 +15,7 @@ export class PublicarArticuloComponent implements OnInit {
   
   ngOnInit() {
   }
-  validarSeccion(){
-    if(this.authService.getToken()==null){
-      alert("Debe estar Logiado para subir articulos");
-      this.router.navigateByUrl('auth/login');
-    
-     }else{
-       return false;
-     }
 
-  }
   private subido: boolean=false;
   private ruta=null;
   fileChange(element) {
