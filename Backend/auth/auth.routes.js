@@ -11,7 +11,7 @@ module.exports= (router)=>{
             'message': req.files.uploads[0].path
         });
     });
-    router.get('/tipoUsuario',Users.tipoCliente);
+    router.post('/tipoUsuario',Users.tipoCliente);
     router.get('/listarArticulos',Users.listarArticulos);
 
 }

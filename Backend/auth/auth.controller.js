@@ -26,9 +26,8 @@ exports.createUser = (req,res,next)=> {
             return res.send({error});
         } 
         const expiresIn=24*60*60;
-        const accessToken = jwt.sign({id:user.id},
-            SECRET_KEY,{expiresIn:expiresIn
-            });
+        //const accessToken = jwt.sign({id:user.id},
+        const accessToken = user.id;
             const dataUser={
                 name: user.name,
                 email: user.email,
@@ -60,8 +59,8 @@ exports.loginUser = (req, res, next) => {
         if (resultPassword) {
           const expiresIn = 24 * 60 * 60;
           const t= jwt
-          const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
-  
+          //const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
+          const accessToken = user.id;
           const dataUser = {
             name: user.name,
             email: user.email,
@@ -116,9 +115,26 @@ exports.loginUser = (req, res, next) => {
     });
 }
 
-exports.tipoCliente =  async(req,res,next)=> { 
-  const listav= await User.find();
-  res.json(listav);  
+exports.tipoCliente =  async(req,res,next)=> {
+ console.log(req.body.token);
+  User.find({ _id: req.body.token }, (err, user) => {
+    const error={
+        mensaje:"Error"
+    }
+  if (err) return res.send(err);
+
+  if (!user) {
+    // email does not exist
+    //res.status(409).send({ message: 'Something is wrong' });
+    res.send(error);
+  }
+    else{
+      console.log("tipo: ",user.tipo);
+      res.send(user.tipo);
+    }
+  //const listav= await User.find();
+  //res.json(listav);  
+  });
 }
 
 exports.listarArticulos =  async(req,res,next)=> { 
