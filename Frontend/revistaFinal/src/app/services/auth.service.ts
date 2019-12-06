@@ -125,4 +125,7 @@ export class AuthService {
    getArt():string{
     return this.artSele;
   }
+  asignarPar(articulo:ArticuloI) {
+    return this.httpClient.post(`${this.AUTH_SERVER}/asignarPar`,articulo);
+  }
 }

@@ -4,7 +4,6 @@ import { AuthService } from '../services/auth.service';
 import { UserI } from '../models/user';
 
 import { ArticuloI } from '../models/articulo';
-import { SrvRecord } from 'dns';
 @Component({
   selector: 'app-asignar-par',
   templateUrl: './asignar-par.component.html',
@@ -23,6 +22,7 @@ export class AsignarParComponent implements OnInit {
     this.authService.listarPares().subscribe(data=>{this.listaPares=data,console.log(this.listaPares)});
     this.url=this.authService.getArt();
     this.authService.listarArticuloId(this.url).subscribe(data=>{this.articulo=data,console.log(this.articulo)});
+    this.authService.asignarPar(this.articulo);
    }
 
   validarSeccion(){
@@ -75,7 +75,8 @@ export class AsignarParComponent implements OnInit {
     Estado.innerHTML = '<p>Estado: Enviado para Calificar</p>';
   }
   public Asignarpar2(par1){
-    console.log(par1.value);
+    this.authService.asignarPar(this.articulo);
+    console.log("este:",par1.value);
   }
 
 }

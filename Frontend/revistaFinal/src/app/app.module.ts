@@ -15,6 +15,7 @@ import { AsignarParComponent } from './asignar-par/asignar-par.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { VistaParComponent } from './vista-par/vista-par.component';
 
 const routes:Routes=[{path:'',component:PaginaPrincipalComponent},
                     { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
@@ -36,7 +37,8 @@ const routes:Routes=[{path:'',component:PaginaPrincipalComponent},
     VistaEditorComponent,
     ListaAutoresParesComponent,
     AsignarParComponent,
-    PaginaPrincipalComponent
+    PaginaPrincipalComponent,
+    VistaParComponent
   ],
   imports: [RouterModule.forRoot(routes),
     BrowserModule,

@@ -145,7 +145,7 @@ exports.listarArticulos =  async(req,res,next)=> {
 
 exports.listarMisArticulos =  async(req,res,next)=> { 
   const listav= await Articulo.find({autor: ''+req.body.token});
-  console.log(listav);
+  //console.log(listav);
   res.json(listav); 
   
 }
@@ -153,19 +153,28 @@ exports.listarMisArticulos =  async(req,res,next)=> {
 //Corregir que no retorne campos importantes
 exports.listarAutores =  async(req,res,next)=> { 
   const listav= await User.find({tipo: 'autor'});
-  console.log(listav);
+  //console.log(listav);
   res.json(listav); 
   
 }
 exports.listarPares =  async(req,res,next)=> { 
   const listav= await User.find({tipo: 'par'});
-  console.log(listav);
+  //console.log(listav);
   res.json(listav); 
   
 }
 exports.listarArticuloId =  async(req,res,next)=> { 
   const listav= await Articulo.findOne({url: req.body.url});
+  //console.log(listav);
+  res.json(listav); 
+  
+}
+exports.asignarPar =  (req,res,next)=> { 
+  console.log("Imprime",req);
+  const listav= Articulo.update({_id: req.body._id},{url:'trtrtr'});
+  console.log(res);
   console.log(listav);
   res.json(listav); 
   
 }
+
