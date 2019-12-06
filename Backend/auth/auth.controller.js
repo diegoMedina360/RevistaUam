@@ -142,3 +142,24 @@ exports.listarArticulos =  async(req,res,next)=> {
   const listav= await Articulo.find();
   res.json(listav);  
 }
+
+exports.listarMisArticulos =  async(req,res,next)=> { 
+  const listav= await Articulo.find({autor: ''+req.body.token});
+  console.log(listav);
+  res.json(listav); 
+  
+}
+
+//Corregir que no retorne campos importantes
+exports.listarAutores =  async(req,res,next)=> { 
+  const listav= await User.find({tipo: 'autor'});
+  console.log(listav);
+  res.json(listav); 
+  
+}
+exports.listarPares =  async(req,res,next)=> { 
+  const listav= await User.find({tipo: 'par'});
+  console.log(listav);
+  res.json(listav); 
+  
+}

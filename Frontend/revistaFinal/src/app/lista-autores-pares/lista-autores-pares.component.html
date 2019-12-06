@@ -16,9 +16,9 @@
                 <div class="menu-toggle" (click)="toggle()" id="hey"></div>
                 <nav id="hey1">
                     <ul>
-                        <li><a href="#" class="active">Inicio</a></li>
-                        <li><a href="#">Lista Autores/Pares</a></li>
-                        <li><a href="#">Salir</a></li>
+                        <li><a href="VistaEditor" class="active">Regresar</a></li>
+                        <li><a href="ListaEditor">Lista Autores/Pares</a></li>
+                        <li><a (click)="salir()">Salir</a></li>
                     </ul>
                 </nav>
                 <div class="clearfix"></div>
@@ -30,20 +30,18 @@
                 <div class="listaAutores listar">
                     <h1>Lista De Autores</h1><br><br>
                     <ul>
-                        <li><a href="#">Antonio mesa</a></li>
-                        <li><a href="#">Jose Felipe</a></li>
-                        <li><a href="#">Marina Perez</a></li>
-                        <li><a href="#">Carlota Jimenez</a></li>
+                            <div *ngFor="let estructura of this.listaAutores">       
+                            <li><a href="AsignarPar">{{estructura.name}}, {{estructura.apellido}}</a></li>
+                            </div>
                     </ul>
                 </div>
 
                 <div class="listaPares listar">
                         <h1>Lista De Pares</h1><br><br>
                         <ul>
-                            <li><a href="#">Antonio mesa</a></li>
-                            <li><a href="#">Jose Felipe</a></li>
-                            <li><a href="#">Marina Perez</a></li>
-                            <li><a href="#">Carlota Jimenez</a></li>
+                                <div *ngFor="let estructura of this.listaPares">       
+                                <li><a href="AsignarPar">{{estructura.name}}, {{estructura.apellido}}</a></li>
+                                </div>
                         </ul>
                 </div>
             </div>

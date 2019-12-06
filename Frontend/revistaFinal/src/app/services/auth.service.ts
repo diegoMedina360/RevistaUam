@@ -101,6 +101,17 @@ export class AuthService {
   }
 
   listarArticulos() {
-    return this.httpClient.get<ArticuloI[]>(`${this.AUTH_SERVER}/listarArticulos`).subscribe(data=>console.log(data));
+    return this.httpClient.get<ArticuloI[]>(`${this.AUTH_SERVER}/listarArticulos`);
+  }
+
+  listarMisArticulos() {
+    return this.httpClient.post<ArticuloI[]>(`${this.AUTH_SERVER}/listarMisArticulos`,{token:this.getToken()});
+  }
+
+  listarAutores() {
+    return this.httpClient.get<UserI[]>(`${this.AUTH_SERVER}/listarAutores`);
+  }
+  listarPares() {
+    return this.httpClient.get<UserI[]>(`${this.AUTH_SERVER}/listarPares`);
   }
 }

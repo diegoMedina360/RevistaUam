@@ -28,7 +28,25 @@ export class LoginComponent implements OnInit {
   onLogin(form): void {
     //console.log('login',form.value);
     this.authService.login(form.value).subscribe(res => {
-      this.router.navigateByUrl('VistaAutor');
+      this.authService.tipoUsuario().subscribe(res2 => {
+        if(res2.tipo=='editor'){
+          this.router.navigateByUrl('VistaEditor');
+        }
+        else{
+          if(res2.tipo=="autor"){
+            this.router.navigateByUrl('VistaAutor');
+          }else{
+            if(res2.tipo=="par"){
+              this.router.navigateByUrl('');
+            }
+            else{
+              this.router.navigateByUrl('');
+            }
+
+          }
+        } 
+      }); 
+      
     });
   }
 

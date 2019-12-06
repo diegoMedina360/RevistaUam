@@ -27,30 +27,22 @@
 
     <section class="seccion">
             <div class="list-group">
-                    <a href="VistaAutor" class="list-group-item list-group-item-action">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Colombia tras la violencia</h5>
-                        <small class="text-muted">3 days ago</small>
-                      </div>
-                      <p class="mb-1">Los esfuerzos de paz en Colombia han puesto fin a 50 años de intenso conflicto. Ahora, científicos estudian a quienes fueron combatientes y a víctimas, al tiempo que ambos intentan sanar</p>
-                      <small>Autor: Sara Reardon,</small>
-                    </a>
-                    <a href="VistaAutor" class="list-group-item list-group-item-action">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Creado el primer embrión artificial de ratón con células madre</h5>
-                        <small class="text-muted">10 days ago</small>
-                      </div>
-                      <p class="mb-1">Científicos de la Universidad de Cambridge han conseguido por primera vez desarrollar un embrión artificial de ratón en laboratorio. Y aunque es poco probable que se pueda convertir en un feto sano, el hallazgo podría servir para estudiar las etapas más tempranas del desarrollo.</p>
-                      <small class="text-muted">Autor: SINC</small>
-                    </a>
-                    <a href="VistaAutor" class="list-group-item list-group-item-action">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Hallan los fósiles más antiguos de la Tierra</h5>
-                        <small class="text-muted">21 days ago</small>
-                      </div>
-                      <p class="mb-1">Restos de microorganismos de 3.770 millones de años, que fueron descubiertos en rocas sedimentarias de antiguas fuentes hidrotermales, se convirtieron en la primera evidencia de vida en la Tierra. </p>
-                      <small class="text-muted">Autor: SINC</small>
-                    </a>
+              <h2>Mis Articulos</h2>
+                <div *ngFor="let estructura of this.listaArticulos">
+                    <!--La url no funciona muy bien-->
+                      <a href="../../../../../../../nodejs/RevistaUam/Backend/{{estructura.url}}" target="_blank" class="list-group-item list-group-item-action">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{estructura.titulo}}</h5>
+                            <small class="text-muted">{{estructura.createdAt}}</small>
+                          </div>
+                          <p class="mb-1">{{estructura.descripcion}}</p>
+                          <small class="text-muted">Revisado: {{estructura.revisado}}</small>
+                          <br>
+                          <small class="text-muted">Publicado: {{estructura.publicado}}</small>
+                        </a>
+                      <h6></h6><br>
+                      
+                    </div>
                   </div>
 
     </section>

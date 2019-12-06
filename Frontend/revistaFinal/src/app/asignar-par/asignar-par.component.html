@@ -30,63 +30,71 @@
 
         <div class="list-group">
             <!--Aticulo1-->
-            <a href="../../assets/pdf/Anlisis de Requisitos.pdf" target="_blank" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Colombia tras la violencia</h5>
-                    <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Los esfuerzos de paz en Colombia han puesto fin a 50 años de intenso conflicto. Ahora, científicos estudian a quienes fueron combatientes y a víctimas, al tiempo que ambos intentan sanar</p>
-                <small>Autor: Sara Reardon,</small>
-            </a>
-            <a class="list-group-item">
-                <div class="listaArticulos">
-                    <div class="botonmodal columnas">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#articulo1" >
-                        Asignar Par Evaluador
-                        </button>
+            <div *ngFor="let estructura of this.listaArticulos">
+                    <!--La url no funciona muy bien-->
+                      <a href="../../../../../../../nodejs/RevistaUam/Backend/{{estructura.url}}" target="_blank" class="list-group-item list-group-item-action">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{estructura.titulo}}</h5>
+                            <small class="text-muted">{{estructura.createdAt}}</small>
+                          </div>
+                          <p class="mb-1">{{estructura.descripcion}}</p>
+                          <small class="text-muted">Revisado: {{estructura.revisado}}</small>
+                          <br>
+                          <small class="text-muted">Publicado: {{estructura.publicado}}</small>
+                        </a>
+                      <h6></h6><br>
+                      <a class="list-group-item">
+                            <div class="listaArticulos">
+                                <div class="botonmodal columnas">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#articulo1" >
+                                    Asignar Par Evaluador
+                                    </button>
+                        
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="articulo1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Asignar Par Evaluador</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body" >
+                                                <select class="form-control" #listaPares2>
+                                                              
+                                                    <option  *ngFor="let estructura of this.listaPares" >{{estructura.name}}, {{estructura.apellido}}</option>
+                                                   
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-outline-warning" (click)="Asignarpar(listaPares2,parID,parAsignado,Estado)" data-dismiss="modal">Asignar Par</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="parAsignado otra" #parAsignado>
+                                    <p>Par asignado: </p>
+                                </div>
+                                <div class="Estado otra" #Estado>
+                                    <p>Estado del Articulo:&nbsp;&nbsp;&nbsp;Recibido</p>
+                                </div>
+                            </div>
             
-                        <!-- Modal -->
-                        <div class="modal fade" id="articulo1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Asignar Par Evaluador</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                            <div class="col1">
+                                <div class="but1">
+                                    <button type="button" class="btn btn-primary" disabled="true">Enviar Notificacion</button>
                                 </div>
-                                <div class="modal-body">
-                                    <select class="form-control" #listaPares>
-                                        <option>Antonio becerra</option>
-                                        <option>Jose Jimenez</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-outline-warning" (click)="Asignarpar(listaPares,parAsignado,Estado)" data-dismiss="modal">Asignar Par</button>
+                                <div class="but2">
+                                    <button type="button" class="btn btn-primary" disabled="true">Publicar Articulo</button>
                                 </div>
                             </div>
-                            </div>
-                        </div>
+                        </a>         
                     </div>
-                    <div class="parAsignado otra" #parAsignado>
-                        <p>Par asignado: </p>
-                    </div>
-                    <div class="Estado otra" #Estado>
-                        <p>Estado del Articulo:&nbsp;&nbsp;&nbsp;Recibido</p>
-                    </div>
-                </div>
-
-                <div class="col1">
-                    <div class="but1">
-                        <button type="button" class="btn btn-primary" disabled="true">Enviar Notificacion</button>
-                    </div>
-                    <div class="but2">
-                        <button type="button" class="btn btn-primary" disabled="true">Publicar Articulo</button>
-                    </div>
-                </div>
-            </a>
+            
             <!--Aticulo2-->
             <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">

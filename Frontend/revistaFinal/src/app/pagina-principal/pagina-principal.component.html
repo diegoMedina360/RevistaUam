@@ -16,7 +16,7 @@
                 <div class="menu-toggle" (click)="toggle()" id="hey"></div>
                 <nav id="hey1">
                     <ul>
-                        <li><a href="#" class="active">Inicio Osmar</a></li>
+                        <li><a href="" class="active">Inicio</a></li>
                         <li><a href="auth/login">Iniciar Sesion</a></li>
                         <li><a href="auth/register">Registro</a></li>
                     </ul>
@@ -27,6 +27,19 @@
 
     <section class="seccion">
             <div class="list-group">
+                <div *ngFor="let estructura of this.listaArticulos">
+                  <!--La url no funciona muy bien-->
+                    <a href="../../../../../../../nodejs/RevistaUam/Backend/{{estructura.url}}" target="_blank" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">{{estructura.titulo}}</h5>
+                          <small class="text-muted">{{estructura.createdAt}}</small>
+                        </div>
+                        <p class="mb-1">{{estructura.descripcion}}</p>
+                        <small class="text-muted">Autor: {{estructura.autor}}</small>
+                      </a>
+                    <h6></h6><br>
+                    
+                  </div>
                     <a href="../../assets/pdf/Anlisis de Requisitos.pdf" target="_blank" class="list-group-item list-group-item-action">
                       <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Colombia tras la violencia</h5>

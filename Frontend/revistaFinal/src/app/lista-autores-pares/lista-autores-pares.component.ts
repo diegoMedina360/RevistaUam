@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { UserI } from '../models/user';
 @Component({
   selector: 'app-lista-autores-pares',
   templateUrl: './lista-autores-pares.component.html',
   styleUrls: ['./lista-autores-pares.component.css']
 })
 export class ListaAutoresParesComponent implements OnInit {
- 
+  private listaAutores:UserI[]=null;
+  private listaPares:UserI[]=null;
+
   constructor(private authService: AuthService, private router: Router) {
     this.validarSeccion();
     //authService.tipoUsuario();
-    authService.listarArticulos();
+    this.authService.listarAutores().subscribe(data=>{this.listaAutores=data,console.log(this.listaAutores)});
+    this.authService.listarPares().subscribe(data=>{this.listaPares=data,console.log(this.listaPares)});
+    //authService.listarArticulos();
    }
 
   validarSeccion(){
@@ -29,6 +34,11 @@ export class ListaAutoresParesComponent implements OnInit {
       }); 
       return false;
      }
+  }
+  salir(){
+    alert("Se cerro seccion correctamente!");
+      this.authService.logout();
+      this.router.navigateByUrl('');
   }
   ngOnInit() {
   }

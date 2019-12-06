@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserI } from '../models/user';
-
+import { ArticuloI } from '../models/articulo';
 @Component({
   selector: 'app-vista-autor',
   templateUrl: './vista-autor.component.html',
   styleUrls: ['./vista-autor.component.css']
 })
 export class VistaAutorComponent implements OnInit {
-
+  private listaArticulos: ArticuloI[]=null;
   constructor(private authService: AuthService, private router: Router) {
     this.validarSeccion();
+    this.authService.listarMisArticulos().subscribe(data=>{this.listaArticulos=data,console.log(this.listaArticulos)});
    }
 
    validarSeccion(){

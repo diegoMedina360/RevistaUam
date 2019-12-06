@@ -54,6 +54,7 @@ export class PublicarArticuloComponent implements OnInit {
       console.log('response received is ', res);
       this.subido=true;
       this.ruta=res;
+      alert("Archivo subido!")
     });
     }
 
