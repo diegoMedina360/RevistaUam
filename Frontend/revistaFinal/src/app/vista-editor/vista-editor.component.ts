@@ -40,6 +40,7 @@ export class VistaEditorComponent implements OnInit {
 irAsignar(id){
   this.authService.saveArtId(id.value);
   console.log(id.value);
+  alert(id.value);
   this.router.navigateByUrl('AsignarPar');
 }
 

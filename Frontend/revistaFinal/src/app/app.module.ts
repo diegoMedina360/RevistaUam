@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { VistaParComponent } from './vista-par/vista-par.component';
+import { CalificarParComponent } from './calificar-par/calificar-par.component';
 const routes:Routes=[{path:'',component:PaginaPrincipalComponent},
                     { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
                     //{path:'login',component:LoginComponent},
@@ -25,6 +26,7 @@ const routes:Routes=[{path:'',component:PaginaPrincipalComponent},
                     {path:'VistaEditor',component:VistaEditorComponent},
                     {path:'ListaEditor',component:ListaAutoresParesComponent},
                     {path:'VistaPar',component:VistaParComponent},
+                    {path:'CalifiPar',component:CalificarParComponent},
                     {path:'AsignarPar',component:AsignarParComponent}];
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ const routes:Routes=[{path:'',component:PaginaPrincipalComponent},
     ListaAutoresParesComponent,
     AsignarParComponent,
     PaginaPrincipalComponent,
-    VistaParComponent
+    VistaParComponent,
+    CalificarParComponent
   ],
   imports: [RouterModule.forRoot(routes),
     BrowserModule,

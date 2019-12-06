@@ -22,7 +22,7 @@ export class AsignarParComponent implements OnInit {
     this.authService.listarPares().subscribe(data=>{this.listaPares=data,console.log(this.listaPares)});
     this.url=this.authService.getArt();
     this.authService.listarArticuloId(this.url).subscribe(data=>{this.articulo=data,console.log(this.articulo)});
-    this.authService.asignarPar(this.articulo);
+    this.authService.asignarPar(this.articulo).subscribe(data=>{console.log(this.articulo)});
    }
 
   validarSeccion(){
@@ -39,7 +39,7 @@ export class AsignarParComponent implements OnInit {
         
       });
       if(this.authService.getArt()==null) {
-        this.router.navigateByUrl('VistaEditor');
+        this.router.navigateByUrl('');
       }
       return false;
      }
@@ -67,16 +67,17 @@ export class AsignarParComponent implements OnInit {
   idPar(ide){
     console.log(ide);
   }
-  public Asignarpar(par1,par2,Estado){
+  /*public Asignarpar(par1,par2,Estado){
     console.log(par1.value);
     var nombrepar = par1.value;
     //console.log(id);
     par2.innerHTML = '<p>Par Asignado: '+nombrepar+'</p>';
     Estado.innerHTML = '<p>Estado: Enviado para Calificar</p>';
-  }
+  }*/
   public Asignarpar2(par1){
+    //console.log("entro");
     this.authService.asignarPar(this.articulo);
-    console.log("este:",par1.value);
+    //console.log("este:",par1.value);
   }
 
 }

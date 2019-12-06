@@ -1,6 +1,5 @@
 const User= require('./auth.dao');
-const Articulo=require('./auth.daoArticulo')
-const jwt = require('../node_modules/jsonwebtoken');
+const Articulo=require('./auth.daoArticulo');
 const bcrypt = require('bcryptjs');
 const SECRET_KEY='secretkey123456';
 const fs = require('fs');
@@ -26,7 +25,7 @@ exports.createUser = (req,res,next)=> {
             return res.send({error});
         } 
         const expiresIn=24*60*60;
-        //const accessToken = jwt.sign({id:user.id},
+        //const accessToken =
         const accessToken = user.cedula;
             const dataUser={
                 name: user.name,
@@ -59,7 +58,7 @@ exports.loginUser = (req, res, next) => {
         if (resultPassword) {
           const expiresIn = 24 * 60 * 60;
           const t= jwt
-          //const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
+          //const accessToken = 
           const accessToken = user.cedula;
           const dataUser = {
             name: user.name,
@@ -78,7 +77,7 @@ exports.loginUser = (req, res, next) => {
   }
 
   exports.createArt = (req,res,next)=> {
-    console.log("CCCCCCCCCC",req.body);
+    //console.log("CCCCCCCCCC",req.body);
     //const source = fs.createReadStream(req.body.archivoAdjunto);
     //const destination = fs.createWriteStream("assets/pdf/articulo2.pdf");
     /*fs.rename(req.body.archivoAdjunto, '/tmp/tortadechocolate.pdf', (err) => {
@@ -129,7 +128,7 @@ exports.tipoCliente =  async(req,res,next)=> {
     res.send(error);
   }
     else{
-      console.log("tipo: ",user.tipo);
+      //console.log("tipo: ",user.tipo);
       tipo=user.tipo;
       res.send({tipo});
     }
@@ -169,11 +168,12 @@ exports.listarArticuloId =  async(req,res,next)=> {
   res.json(listav); 
   
 }
-exports.asignarPar =  (req,res,next)=> { 
-  console.log("Imprime",req);
-  const listav= Articulo.update({_id: req.body._id},{url:'trtrtr'});
-  console.log(res);
-  console.log(listav);
+exports.asignarPar =  async (req,res,next)=> { 
+  console.log("Imprime");
+  console.log(req.body.titul);
+  const listav= await Articulo.update({_id: req.body._id},{url:'trtrtr'});
+  //console.log(res);
+  //console.log(listav);
   res.json(listav); 
   
 }

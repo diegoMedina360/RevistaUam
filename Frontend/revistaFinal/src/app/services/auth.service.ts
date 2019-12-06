@@ -126,6 +126,7 @@ export class AuthService {
     return this.artSele;
   }
   asignarPar(articulo:ArticuloI) {
+    //console.log("lo llamo");
     return this.httpClient.post(`${this.AUTH_SERVER}/asignarPar`,articulo);
   }
 }
