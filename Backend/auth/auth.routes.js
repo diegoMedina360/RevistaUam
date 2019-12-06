@@ -14,6 +14,7 @@ module.exports= (router)=>{
     router.post('/tipoUsuario',Users.tipoCliente);
     router.get('/listarArticulos',Users.listarArticulos);
     router.post('/listarMisArticulos',Users.listarMisArticulos);
+    router.post('/listarArticuloId',Users.listarArticuloId);
     router.get('/listarAutores',Users.listarAutores);
     router.get('/listarPares',Users.listarPares);
 

@@ -11,6 +11,7 @@ export class AuthService {
   AUTH_SERVER: string= 'http://localhost:3000';
   authSubject= new BehaviorSubject(false);
   private token: string;
+  private artSele:string;
   constructor(private httpClient: HttpClient) { }
 
   register(user:UserI): Observable<JwtResponseI>{
@@ -108,10 +109,20 @@ export class AuthService {
     return this.httpClient.post<ArticuloI[]>(`${this.AUTH_SERVER}/listarMisArticulos`,{token:this.getToken()});
   }
 
+  listarArticuloId(ids) {
+    return this.httpClient.post<ArticuloI>(`${this.AUTH_SERVER}/listarArticuloId`,{url:ids});
+  }
   listarAutores() {
     return this.httpClient.get<UserI[]>(`${this.AUTH_SERVER}/listarAutores`);
   }
   listarPares() {
     return this.httpClient.get<UserI[]>(`${this.AUTH_SERVER}/listarPares`);
+  }
+
+  saveArtId(id:string): void{
+    this.artSele= id;
+  }
+   getArt():string{
+    return this.artSele;
   }
 }

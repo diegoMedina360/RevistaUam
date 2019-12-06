@@ -30,17 +30,17 @@
 
         <div class="list-group">
             <!--Aticulo1-->
-            <div *ngFor="let estructura1 of this.listaArticulos">
+            <div >
                     <!--La url no funciona muy bien-->
-                      <a href="../../../../../../../nodejs/RevistaUam/Backend/{{estructura1.url}}" target="_blank" class="list-group-item list-group-item-action">
+                      <a href="" target="_blank" class="list-group-item list-group-item-action">
                           <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{estructura1.titulo}}</h5>
-                            <small class="text-muted">{{estructura1.createdAt}}</small>
+                            <h5 class="mb-1">{{this.articulo.titulo}}</h5>
+                            <small class="text-muted">{{this.articulo.createdAt}}</small>
                           </div>
-                          <p class="mb-1">{{estructura1.descripcion}}</p>
-                          <small class="text-muted">Revisado: {{estructura1.revisado}}</small>
+                          <p class="mb-1">{{this.articulo.descripcion}}</p>
+                          <small class="text-muted">Revisado: {{this.articulo.revisado}}</small>
                           <br>
-                          <small class="text-muted">Publicado: {{estructura1.publicado}}</small>
+                          <small class="text-muted">Publicado: {{this.articulo.publicado}}</small>
                         </a>
                       <h6></h6><br>
                       <a class="list-group-item"  >
@@ -67,13 +67,11 @@
                                                     <option  *ngFor="let estructura of this.listaPares" value="{{estructura.cedula}}">{{estructura.name}}, {{estructura.apellido}}</option>
 
                                                 </select>
-                                                <select #id >
-                                                        <option  *ngFor="let estructura of this.listaPares" value="{{estructura1.url}}" ></option>
-                                                </select>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-outline-warning"    (click)="Asignarpar(listaPares2,id)" data-dismiss="modal">Asignar Par</button>
+                                            <button type="button" class="btn btn-outline-warning"    (click)="Asignarpar2(listaPares2)" data-dismiss="modal">Asignar Par</button>
                                             </div>
                                         </div>
                                         </div>
@@ -92,121 +90,6 @@
                             </div>
                         </a>         
                     </div>
-            
-            <!--Aticulo2-->
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Creado el primer embrión artificial de ratón con células madre</h5>
-                    <small class="text-muted">10 days ago</small>
-                </div>
-                <p class="mb-1">Científicos de la Universidad de Cambridge han conseguido por primera vez desarrollar un embrión artificial de ratón en laboratorio. Y aunque es poco probable que se pueda convertir en un feto sano, el hallazgo podría servir para estudiar las etapas más tempranas del desarrollo.</p>
-                <small class="text-muted">Autor: SINC</small>
-            </a>
-            <a class="list-group-item">
-                    <div class="listaArticulos">
-                        <div class="botonmodal otra">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#articulo2">
-                        Asignar Par Evaluador
-                        </button>
-            
-                        <!-- Modal -->
-                        <div class="modal fade" id="articulo2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Asignar Par Evaluador</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                    <select class="form-control" #listaPares2>
-                                        <option>Antonio becerra</option>
-                                        <option>Jose Jimenez</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-outline-warning" (click)="Asignarpar(listaPares2,parAsignado2,Estado2)" data-dismiss="modal">Asignar Par</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="parAsignado otra" #parAsignado2>
-                            <p>Par asignado: </p>
-                        </div>
-                        <div class="Estado otra" #Estado2>
-                            <p>Estado del Articulo:&nbsp;&nbsp;&nbsp;Recibido</p>
-                        </div>
-                    </div>
-                    <div class="col1">
-                            <div class="but1">
-                                <button type="button" class="btn btn-primary" disabled="true">Enviar Notificacion</button>
-                            </div>
-                            <div class="but2">
-                                <button type="button" class="btn btn-primary" disabled="true">Publicar Articulo</button>
-                            </div>
-                        </div>
-                </a>
-            <!--Aticulo3-->
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Hallan los fósiles más antiguos de la Tierra</h5>
-                    <small class="text-muted">21 days ago</small>
-                </div>
-                <p class="mb-1">Restos de microorganismos de 3.770 millones de años, que fueron descubiertos en rocas sedimentarias de antiguas fuentes hidrotermales, se convirtieron en la primera evidencia de vida en la Tierra. </p>
-                <small class="text-muted">Autor: SINC</small>
-            </a>
-            <a class="list-group-item">
-                    <div class="listaArticulos">
-                        <div class="botonmodal otra">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#articulo3">
-                        Asignar Par Evaluador
-                        </button>
-            
-                        <!-- Modal -->
-                        <div class="modal fade" id="articulo3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Asignar Par Evaluador</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                    <select class="form-control" #listaPares3>
-                                        <option>Antonio becerra</option>
-                                        <option>Jose Jimenez</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-outline-warning" (click)="Asignarpar(listaPares3,parAsignado3,Estado3)" data-dismiss="modal">Asignar Par</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="parAsignado otra" #parAsignado3>
-                            <p>Par asignado: </p>
-                        </div>
-                        <div class="Estado otra" #Estado3>
-                            <p>Estado del Articulo:&nbsp;&nbsp;&nbsp;Recibido</p>
-                        </div>
-                    </div>
-                    <div class="col1">
-                            <div class="but1">
-                                <button type="button" class="btn btn-primary" disabled="true">Enviar Notificacion</button>
-                            </div>
-                            <div class="but2">
-                                <button type="button" class="btn btn-primary" disabled="true">Publicar Articulo</button>
-                            </div>
-                        </div>
-                </a>
         </div>
         
     </section>

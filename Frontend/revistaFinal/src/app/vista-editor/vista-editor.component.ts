@@ -37,7 +37,11 @@ export class VistaEditorComponent implements OnInit {
       this.authService.logout();
       this.router.navigateByUrl('');
   }
-
+irAsignar(id){
+  this.authService.saveArtId(id.value);
+  console.log(id.value);
+  this.router.navigateByUrl('AsignarPar');
+}
 
   ngOnInit() {
   }

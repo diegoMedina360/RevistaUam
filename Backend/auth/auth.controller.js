@@ -163,3 +163,9 @@ exports.listarPares =  async(req,res,next)=> {
   res.json(listav); 
   
 }
+exports.listarArticuloId =  async(req,res,next)=> { 
+  const listav= await Articulo.findOne({url: req.body.url});
+  console.log(listav);
+  res.json(listav); 
+  
+}

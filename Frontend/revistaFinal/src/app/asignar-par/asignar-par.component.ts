@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { UserI } from '../models/user';
 
 import { ArticuloI } from '../models/articulo';
+import { SrvRecord } from 'dns';
 @Component({
   selector: 'app-asignar-par',
   templateUrl: './asignar-par.component.html',
@@ -13,11 +14,15 @@ export class AsignarParComponent implements OnInit {
   private listaArticulos: ArticuloI[]=null;
   private listaAutores:UserI[]=null;
   private listaPares:UserI[]=null;
+  private articulo:ArticuloI=null;
+  private url:string;
   constructor(private authService: AuthService, private router: Router) {
     this.validarSeccion();
     this.authService.listarArticulos().subscribe(data=>{this.listaArticulos=data,console.log(this.listaArticulos)});
     this.authService.listarAutores().subscribe(data=>{this.listaAutores=data,console.log(this.listaAutores)});
     this.authService.listarPares().subscribe(data=>{this.listaPares=data,console.log(this.listaPares)});
+    this.url=this.authService.getArt();
+    this.authService.listarArticuloId(this.url).subscribe(data=>{this.articulo=data,console.log(this.articulo)});
    }
 
   validarSeccion(){
@@ -32,7 +37,10 @@ export class AsignarParComponent implements OnInit {
           this.router.navigateByUrl('');
         }
         
-      }); 
+      });
+      if(this.authService.getArt()==null) {
+        this.router.navigateByUrl('VistaEditor');
+      }
       return false;
      }
   }
@@ -59,13 +67,15 @@ export class AsignarParComponent implements OnInit {
   idPar(ide){
     console.log(ide);
   }
-  public Asignarpar(par,ide){
-    console.log(par.value,ide.value);
-    //var nombrepar = par1.value;
+  public Asignarpar(par1,par2,Estado){
+    console.log(par1.value);
+    var nombrepar = par1.value;
     //console.log(id);
-    //par2.innerHTML = '<p>Par Asignado: '+nombrepar+'</p>';
-    //Estado.innerHTML = '<p>Estado: Enviado para Calificar</p>';
+    par2.innerHTML = '<p>Par Asignado: '+nombrepar+'</p>';
+    Estado.innerHTML = '<p>Estado: Enviado para Calificar</p>';
   }
-
+  public Asignarpar2(par1){
+    console.log(par1.value);
+  }
 
 }
