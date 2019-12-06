@@ -27,7 +27,7 @@ exports.createUser = (req,res,next)=> {
         } 
         const expiresIn=24*60*60;
         //const accessToken = jwt.sign({id:user.id},
-        const accessToken = user.id;
+        const accessToken = user.cedula;
             const dataUser={
                 name: user.name,
                 email: user.email,
@@ -60,7 +60,7 @@ exports.loginUser = (req, res, next) => {
           const expiresIn = 24 * 60 * 60;
           const t= jwt
           //const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
-          const accessToken = user.id;
+          const accessToken = user.cedula;
           const dataUser = {
             name: user.name,
             email: user.email,
@@ -117,7 +117,7 @@ exports.loginUser = (req, res, next) => {
 
 exports.tipoCliente =  async(req,res,next)=> {
  console.log(req.body.token);
-  User.find({ _id: req.body.token }, (err, user) => {
+  User.findOne({ cedula: ''+req.body.token}, (err, user) => {
     const error={
         mensaje:"Error"
     }
@@ -130,7 +130,8 @@ exports.tipoCliente =  async(req,res,next)=> {
   }
     else{
       console.log("tipo: ",user.tipo);
-      res.send(user.tipo);
+      tipo=user.tipo;
+      res.send({tipo});
     }
   //const listav= await User.find();
   //res.json(listav);  

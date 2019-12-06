@@ -11,9 +11,32 @@ import { ArticuloI } from '../models/articulo';
 export class PublicarArticuloComponent implements OnInit {
  
   uploadedFiles: Array < File > ;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { 
+    this.validarSeccion();
+  }
   
   ngOnInit() {
+  }
+  validarSeccion(){
+    if(this.authService.getToken()==null){
+      alert("Necesitas Iniciar seccion!"); 
+      this.router.navigateByUrl('auth/login');
+     }
+    else{
+      this.authService.tipoUsuario().subscribe(res => {
+        if(res.tipo=='autor'){}
+        else{
+          this.router.navigateByUrl('');
+        }
+        
+      }); 
+      return false;
+     }
+  }
+  salir(){
+    alert("Se cerro seccion correctamente!");
+      this.authService.logout();
+      this.router.navigateByUrl('');
   }
 
   private subido: boolean=false;

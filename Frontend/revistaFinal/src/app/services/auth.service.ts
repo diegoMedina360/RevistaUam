@@ -97,10 +97,10 @@ export class AuthService {
   }
 
   tipoUsuario() {
-    return this.httpClient.post<UserI[]>(`${this.AUTH_SERVER}/tipoUsuario`,{token:this.getToken()}).subscribe(data=>console.log(data));
+    return this.httpClient.post<UserI>(`${this.AUTH_SERVER}/tipoUsuario`,{token:this.getToken()});
   }
 
   listarArticulos() {
-    return this.httpClient.get<ArticuloI[]>(`${this.AUTH_SERVER}/listarArticulos`).subscribe(data=>console.log(data));;
+    return this.httpClient.get<ArticuloI[]>(`${this.AUTH_SERVER}/listarArticulos`).subscribe(data=>console.log(data));
   }
 }

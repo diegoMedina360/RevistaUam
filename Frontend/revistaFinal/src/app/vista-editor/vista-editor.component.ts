@@ -12,13 +12,20 @@ export class VistaEditorComponent implements OnInit {
     this.validarSeccion();
    }
 
-  validarSeccion(){
+   validarSeccion(){
     if(this.authService.getToken()==null){
-      alert("Debe estar Logiado primero");
+      alert("Necesitas Iniciar seccion!"); 
       this.router.navigateByUrl('auth/login');
-    
-     }else{
-       return false;
+     }
+    else{
+      this.authService.tipoUsuario().subscribe(res => {
+        if(res.tipo=='editor'){}
+        else{
+          this.router.navigateByUrl('');
+        }
+        
+      }); 
+      return false;
      }
   }
   salir(){

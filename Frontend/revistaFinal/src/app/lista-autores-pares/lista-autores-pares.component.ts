@@ -7,10 +7,10 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./lista-autores-pares.component.css']
 })
 export class ListaAutoresParesComponent implements OnInit {
-
+ 
   constructor(private authService: AuthService, private router: Router) {
     this.validarSeccion();
-    authService.tipoUsuario();
+    //authService.tipoUsuario();
     authService.listarArticulos();
    }
 
@@ -19,7 +19,14 @@ export class ListaAutoresParesComponent implements OnInit {
       alert("Necesitas Iniciar seccion!"); 
       this.router.navigateByUrl('auth/login');
      }
-    else{    
+    else{
+      this.authService.tipoUsuario().subscribe(res => {
+        if(res.tipo=='editor'){}
+        else{
+          this.router.navigateByUrl('');
+        }
+        
+      }); 
       return false;
      }
   }

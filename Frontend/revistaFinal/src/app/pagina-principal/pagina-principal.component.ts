@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { UserI } from '../models/user';
 import { sanitizeIdentifier } from '@angular/compiler';
 
 @Component({
@@ -8,8 +11,10 @@ import { sanitizeIdentifier } from '@angular/compiler';
 })
 export class PaginaPrincipalComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.listarArticulos();
+   }
+  
   ngOnInit() {
   }
 
