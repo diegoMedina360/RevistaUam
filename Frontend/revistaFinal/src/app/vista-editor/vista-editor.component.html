@@ -27,7 +27,19 @@
     </div>
 
     <section class="seccion">
-            
+            <div *ngFor="let estructura1 of this.listaArticulos">
+                    <!--La url no funciona muy bien-->
+                      <a href="../../../../../../../nodejs/RevistaUam/Backend/{{estructura1.url}}" target="_blank" class="list-group-item list-group-item-action">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{estructura1.titulo}}</h5>
+                            <small class="text-muted">{{estructura1.createdAt}}</small>
+                          </div>
+                          <p class="mb-1">{{estructura1.descripcion}}</p>
+                          <small class="text-muted">Revisado: {{estructura1.revisado}}</small>
+                          <br>
+                          <small class="text-muted">Publicado: {{estructura1.publicado}}</small>
+                        </a>
+                    </div>
     </section>
 
     <footer class="pie">

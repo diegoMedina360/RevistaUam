@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+
+import { ArticuloI } from '../models/articulo';
 @Component({
   selector: 'app-vista-editor',
   templateUrl: './vista-editor.component.html',
   styleUrls: ['./vista-editor.component.css']
 })
 export class VistaEditorComponent implements OnInit {
-
+  private listaArticulos: ArticuloI[]=null;
   constructor(private authService: AuthService, private router: Router) {
+    this.authService.listarArticulos().subscribe(data=>{this.listaArticulos=data,console.log(this.listaArticulos)});
+   
     this.validarSeccion();
    }
 

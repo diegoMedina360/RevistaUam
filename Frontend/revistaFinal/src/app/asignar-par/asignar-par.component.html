@@ -65,12 +65,15 @@
                                                 <select class="form-control" #listaPares2>
                                                               
                                                     <option  *ngFor="let estructura of this.listaPares" value="{{estructura.cedula}}">{{estructura.name}}, {{estructura.apellido}}</option>
-                                                   
+
+                                                </select>
+                                                <select #id >
+                                                        <option  *ngFor="let estructura of this.listaPares" value="{{estructura1.url}}" ></option>
                                                 </select>
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-outline-warning"    (click)="Asignarpar(listaPares2)" data-dismiss="modal">Asignar Par</button>
+                                            <button type="button" class="btn btn-outline-warning"    (click)="Asignarpar(listaPares2,id)" data-dismiss="modal">Asignar Par</button>
                                             </div>
                                         </div>
                                         </div>
