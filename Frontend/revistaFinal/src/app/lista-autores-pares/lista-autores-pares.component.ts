@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-lista-autores-pares',
   templateUrl: './lista-autores-pares.component.html',
@@ -7,8 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaAutoresParesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.validarSeccion();
+    authService.tipoUsuario();
+    authService.listarArticulos();
+   }
 
+  validarSeccion(){
+    if(this.authService.getToken()==null){
+      alert("Necesitas Iniciar seccion!"); 
+      this.router.navigateByUrl('auth/login');
+     }
+    else{    
+      return false;
+     }
+  }
   ngOnInit() {
   }
 

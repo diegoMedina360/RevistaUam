@@ -95,4 +95,12 @@ export class AuthService {
   uploadFile(formData) {
     return this.httpClient.post(`${this.AUTH_SERVER}/api/upload`, formData);
   }
+
+  tipoUsuario() {
+    return this.httpClient.get<UserI[]>(`${this.AUTH_SERVER}/tipoUsuario`).subscribe(data=>console.log(data));;
+  }
+
+  listarArticulos() {
+    return this.httpClient.get<ArticuloI[]>(`${this.AUTH_SERVER}/listarArticulos`).subscribe(data=>console.log(data));;
+  }
 }

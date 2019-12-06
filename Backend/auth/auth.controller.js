@@ -59,6 +59,7 @@ exports.loginUser = (req, res, next) => {
         const resultPassword = bcrypt.compareSync(userData.password, user.password);
         if (resultPassword) {
           const expiresIn = 24 * 60 * 60;
+          const t= jwt
           const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
   
           const dataUser = {
@@ -113,4 +114,14 @@ exports.loginUser = (req, res, next) => {
       }
             res.send({exito});
     });
+}
+
+exports.tipoCliente =  async(req,res,next)=> { 
+  const listav= await User.find();
+  res.json(listav);  
+}
+
+exports.listarArticulos =  async(req,res,next)=> { 
+  const listav= await Articulo.find();
+  res.json(listav);  
 }
