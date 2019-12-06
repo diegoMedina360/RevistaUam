@@ -70,7 +70,7 @@ export class PublicarArticuloComponent implements OnInit {
     //console.log('Archivo',form.value);
     var dataEnviar={
       titulo:form.controls['titulo'].value,
-      descripcion:form.controls['titulo'].value,
+      descripcion:form.controls['descripcion'].value,
       url:""+this.ruta.message,
       autor:this.authService.getToken()
     }
