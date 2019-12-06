@@ -30,29 +30,29 @@
 
         <div class="list-group">
             <!--Aticulo1-->
-            <div *ngFor="let estructura of this.listaArticulos">
+            <div *ngFor="let estructura1 of this.listaArticulos">
                     <!--La url no funciona muy bien-->
-                      <a href="../../../../../../../nodejs/RevistaUam/Backend/{{estructura.url}}" target="_blank" class="list-group-item list-group-item-action">
+                      <a href="../../../../../../../nodejs/RevistaUam/Backend/{{estructura1.url}}" target="_blank" class="list-group-item list-group-item-action">
                           <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{estructura.titulo}}</h5>
-                            <small class="text-muted">{{estructura.createdAt}}</small>
+                            <h5 class="mb-1">{{estructura1.titulo}}</h5>
+                            <small class="text-muted">{{estructura1.createdAt}}</small>
                           </div>
-                          <p class="mb-1">{{estructura.descripcion}}</p>
-                          <small class="text-muted">Revisado: {{estructura.revisado}}</small>
+                          <p class="mb-1">{{estructura1.descripcion}}</p>
+                          <small class="text-muted">Revisado: {{estructura1.revisado}}</small>
                           <br>
-                          <small class="text-muted">Publicado: {{estructura.publicado}}</small>
+                          <small class="text-muted">Publicado: {{estructura1.publicado}}</small>
                         </a>
                       <h6></h6><br>
-                      <a class="list-group-item">
+                      <a class="list-group-item"  >
                             <div class="listaArticulos">
-                                <div class="botonmodal columnas">
+                                <div class="botonmodal columnas" >
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#articulo1" >
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#articulo1">
                                     Asignar Par Evaluador
                                     </button>
                         
                                     <!-- Modal -->
-                                    <div class="modal fade" id="articulo1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="articulo1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -64,24 +64,19 @@
                                             <div class="modal-body" >
                                                 <select class="form-control" #listaPares2>
                                                               
-                                                    <option  *ngFor="let estructura of this.listaPares" >{{estructura.name}}, {{estructura.apellido}}</option>
+                                                    <option  *ngFor="let estructura of this.listaPares" value="{{estructura.cedula}}">{{estructura.name}}, {{estructura.apellido}}</option>
                                                    
                                                 </select>
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-outline-warning" (click)="Asignarpar(listaPares2,parID,parAsignado,Estado)" data-dismiss="modal">Asignar Par</button>
+                                            <button type="button" class="btn btn-outline-warning"    (click)="Asignarpar(listaPares2)" data-dismiss="modal">Asignar Par</button>
                                             </div>
                                         </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="parAsignado otra" #parAsignado>
-                                    <p>Par asignado: </p>
-                                </div>
-                                <div class="Estado otra" #Estado>
-                                    <p>Estado del Articulo:&nbsp;&nbsp;&nbsp;Recibido</p>
-                                </div>
+                                
                             </div>
             
                             <div class="col1">

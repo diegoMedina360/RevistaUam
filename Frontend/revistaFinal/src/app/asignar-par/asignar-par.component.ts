@@ -59,11 +59,12 @@ export class AsignarParComponent implements OnInit {
   idPar(ide){
     console.log(ide);
   }
-  public Asignarpar(par1,par2,Estado){
-    var nombrepar = par1.value;
+  public Asignarpar(par){
+    console.log(par.value);
+    //var nombrepar = par1.value;
     //console.log(id);
-    par2.innerHTML = '<p>Par Asignado: '+nombrepar+'</p>';
-    Estado.innerHTML = '<p>Estado: Enviado para Calificar</p>';
+    //par2.innerHTML = '<p>Par Asignado: '+nombrepar+'</p>';
+    //Estado.innerHTML = '<p>Estado: Enviado para Calificar</p>';
   }
 
 
