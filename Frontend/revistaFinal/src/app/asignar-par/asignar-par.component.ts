@@ -76,6 +76,7 @@ export class AsignarParComponent implements OnInit {
   }*/
   public Asignarpar2(par1){
     //console.log("entro");
+    //console.log(this.articulo);
     this.authService.asignarPar(this.articulo);
     //console.log("este:",par1.value);
   }

@@ -57,7 +57,6 @@ exports.loginUser = (req, res, next) => {
         const resultPassword = bcrypt.compareSync(userData.password, user.password);
         if (resultPassword) {
           const expiresIn = 24 * 60 * 60;
-          const t= jwt
           //const accessToken = 
           const accessToken = user.cedula;
           const dataUser = {
