@@ -1,5 +1,5 @@
 const multipart = require('connect-multiparty');  
-const multipartMiddleware = multipart({uploadDir: './uploads' });
+const multipartMiddleware = multipart({uploadDir: './uploads/pdf' });
 const Users = require('./auth.controller'); 
 module.exports= (router)=>{
     router.post('/register',Users.createUser);

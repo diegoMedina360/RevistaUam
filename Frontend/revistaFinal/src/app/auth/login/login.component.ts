@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('VistaAutor');
           }else{
             if(res2.tipo=="par"){
-              this.router.navigateByUrl('');
+              this.router.navigateByUrl('VistaPar');
             }
             else{
               this.router.navigateByUrl('');
